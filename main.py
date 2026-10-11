@@ -13,7 +13,7 @@ def home():
         "project": "SmartRelease",
         "version": APP_VERSION,
         "status": APP_STATUS,
-        "message": "SmartRelease API is running"
+        "message": "SmartRelease API v2 - Canary release successful"
     }
 
 
