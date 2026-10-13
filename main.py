@@ -1,10 +1,14 @@
 import os
+
 from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(title="SmartRelease API")
 
 APP_VERSION = os.getenv("APP_VERSION", "v1")
 APP_STATUS = os.getenv("APP_STATUS", "healthy")
+
+Instrumentator().instrument(app).expose(app, endpoint="/metrics")
 
 
 @app.get("/")
