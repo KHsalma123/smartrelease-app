@@ -1,6 +1,6 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI(title="SmartRelease API")
@@ -27,3 +27,10 @@ def health():
         "status": APP_STATUS,
         "version": APP_VERSION
     }
+
+@app.get("/test-error")
+def test_error():
+    raise HTTPException(
+        status_code=500,
+        detail="SmartRelease controlled failure test"
+    )

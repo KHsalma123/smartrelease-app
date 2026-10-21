@@ -18,3 +18,9 @@ def test_health_returns_healthy():
 
     assert response.status_code == 200
     assert response.json()["status"] == "healthy"
+
+def test_error_returns_500():
+    response = client.get("/test-error")
+
+    assert response.status_code == 500
+    assert response.json()["detail"] == "SmartRelease controlled failure test"
